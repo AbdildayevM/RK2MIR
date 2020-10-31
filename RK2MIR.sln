@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RK2MIR", "RK2MIR\RK2MIR.csproj", "{DBDD55D8-3B87-4B09-8AB9-F99A2E7E31DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBDD55D8-3B87-4B09-8AB9-F99A2E7E31DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBDD55D8-3B87-4B09-8AB9-F99A2E7E31DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBDD55D8-3B87-4B09-8AB9-F99A2E7E31DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBDD55D8-3B87-4B09-8AB9-F99A2E7E31DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F9CB4FF-4A95-4749-A0DD-3934FE642BA4}
+	EndGlobalSection
+EndGlobal
