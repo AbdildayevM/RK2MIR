@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace RK2MIR.Models
 {
-    public class Client//-Order(1-m)
+    public class Employee//-Order(1-m)
     {
         public int ID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public long PhoneNumber { get; set; }
         public string Password { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime SignDate { get; set; }
+        public double RateOutOfTen { get; set; }
+
 
         public void setID(int ID)
         {
@@ -44,7 +42,6 @@ namespace RK2MIR.Models
             return this.FirstName;
         }
 
-
         public void setPhoneNumber(long phone)
         {
             this.PhoneNumber = phone;
@@ -61,6 +58,15 @@ namespace RK2MIR.Models
         public string getPassword()
         {
             return this.Password;
+        }
+
+        public void setRateOutOfTen(double rate)
+        {
+            this.RateOutOfTen = rate;
+        }
+        public double getRateOutOfTen()
+        {
+            return this.RateOutOfTen;
         }
     }
 }
