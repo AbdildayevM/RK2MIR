@@ -50,7 +50,7 @@ namespace RK2MIR
             
             app.UseRouting();
 
-            //app.UseAuthorization();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
