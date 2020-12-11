@@ -8,6 +8,18 @@ namespace RK2MIR.Models
 {
     public class Partners//-News(m-m)
     {
+        public Partners(int PartnerID, string CompanyName, string Description, string Link)
+        {
+            this.PartnerID = PartnerID;
+            this.CompanyName = CompanyName;
+            this.Description = Description;
+            this.Link = Link;
+        }
+
+        public Partners()
+        {
+        }
+
         [Key]
         public int PartnerID { get; set; }
         public string CompanyName { get; set; }

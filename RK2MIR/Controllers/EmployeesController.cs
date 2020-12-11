@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RK2MIR.Data;
 using RK2MIR.Models;
+using RK2MIR.Services;
 
 namespace RK2MIR.Controllers
 {
@@ -19,14 +20,21 @@ namespace RK2MIR.Controllers
             _context = context;
         }
 
+        private readonly EmployeeService _employeeService;
+
+        public EmployeesController(EmployeeService employeeService)
+        {
+            _employeeService = employeeService;
+        }
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Employee.ToListAsync());
+            var employee = await _employeeService.GetEmployees();
+            return View(employee);
         }
 
-        // GET: Employees/Details/5
-        public async Task<IActionResult> Details(int? id)
+            // GET: Employees/Details/5
+            public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {

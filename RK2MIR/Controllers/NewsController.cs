@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RK2MIR.Data;
 using RK2MIR.Models;
+using RK2MIR.Services;
 
 namespace RK2MIR.Controllers
 {
@@ -19,10 +20,17 @@ namespace RK2MIR.Controllers
             _context = context;
         }
 
+        private readonly NewsService _newsService;
+
+        public NewsController(NewsService newsService)
+        {
+            _newsService = newsService;
+        }
         // GET: News
         public async Task<IActionResult> Index()
         {
-            return View(await _context.News.ToListAsync());
+            var news = await _newsService.GetNews();
+            return View(news);
         }
 
         // GET: News/Details/5

@@ -10,6 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using RK2MIR.Data;
+using RK2MIR.Services;
+using RK2MIR.Repositories;
+
 
 namespace RK2MIR
 {
@@ -27,7 +30,18 @@ namespace RK2MIR
         {
             services.AddRazorPages();
             services.AddControllersWithViews();
-
+            services.AddScoped<ClientService>();
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<EmployeeService>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<FoodService>();
+            services.AddScoped<IFoodRepository, FoodRepository>();
+            services.AddScoped<NewsService>();
+            services.AddScoped<INewsRepository, NewsRepository>();
+            services.AddScoped<OrderService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<PartnersService>();
+            services.AddScoped<IPartnersRepository, PartnersRepository>();
             services.AddDbContext<RK2MIRContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("RK2MIRContext")));
         }

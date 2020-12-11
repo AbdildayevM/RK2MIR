@@ -7,6 +7,21 @@ namespace RK2MIR.Models
 {
     public class Order//many for one client, employee. Or one for many food
     {
+        public Order(int ID, int ClientID, int FoodID, string Address, int Numb, double TotalCost, DateTime Ordertime)
+        {
+            this.ID = ID;
+            this.ClientID = ClientID;
+            this.FoodID = FoodID;
+            this.Address = Address;
+            this.Numb = Numb;
+            this.TotalCost = TotalCost;
+            this.Ordertime = Ordertime;
+        }
+
+        public Order()
+        {
+        }
+
         public int ID { get; set; }
         public int ClientID { get; set; }
         public int FoodID { get; set; }

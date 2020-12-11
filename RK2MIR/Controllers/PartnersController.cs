@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RK2MIR.Data;
 using RK2MIR.Models;
+using RK2MIR.Services;
 
 namespace RK2MIR.Controllers
 {
@@ -19,10 +20,17 @@ namespace RK2MIR.Controllers
             _context = context;
         }
 
+        private readonly PartnersService _partnersService;
+
+        public PartnersController(PartnersService partnersService)
+        {
+            _partnersService = partnersService;
+        }
         // GET: Partners
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Partners.ToListAsync());
+            var partners = await _partnersService.GetPartners();
+            return View(partners);
         }
 
         // GET: Partners/Details/5

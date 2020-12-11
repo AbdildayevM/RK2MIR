@@ -7,13 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RK2MIR.Data;
 using RK2MIR.Models;
+using RK2MIR.Services;
 
 namespace RK2MIR.Controllers
 {
     public class ClientsController : Controller
     {
         private readonly RK2MIRContext _context;
+        private readonly ClientService   _clientService;
 
+        public ClientsController(ClientService clientService)
+        {
+            _clientService = clientService;
+        }   
         public ClientsController(RK2MIRContext context)
         {
             _context = context;
@@ -22,7 +28,8 @@ namespace RK2MIR.Controllers
         // GET: Clients
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Client.ToListAsync());
+            var clients = await _clientService.GetClients();
+            return View(clients);
         }
 
         // GET: Clients/Details/5
@@ -53,7 +60,7 @@ namespace RK2MIR.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,LastName,FirstName,PhoneNumber,Password,SignDate")] Client client)
         {
             if (ModelState.IsValid)
@@ -85,7 +92,7 @@ namespace RK2MIR.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstName,PhoneNumber,Password,SignDate")] Client client)
         {
             if (id != client.ID)
@@ -136,7 +143,7 @@ namespace RK2MIR.Controllers
 
         // POST: Clients/Delete/5
         [HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var client = await _context.Client.FindAsync(id);

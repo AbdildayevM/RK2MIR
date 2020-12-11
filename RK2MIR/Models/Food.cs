@@ -7,6 +7,17 @@ namespace RK2MIR.Models
 {
     public class Food//-Order(m-1). News(1-1)
     {
+        public Food(int FoodID, string Title, int Cost)
+        {
+            this.FoodID = FoodID;
+            this.Title = Title;
+            this.Cost = Cost;
+        }
+
+        public Food()
+        {
+        }
+
         public int FoodID { get; set; }
         public string Title { get; set; }
         public int Cost { get; set; }

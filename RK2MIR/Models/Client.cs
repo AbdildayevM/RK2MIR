@@ -8,6 +8,21 @@ namespace RK2MIR.Models
 {
     public class Client//-Order(1-m)
     {
+
+        public Client(int ID, string Lastname, string FirstName, long PhoneNumber, string Password, DateTime SignDate)
+        {
+            this.ID = ID;
+            this.LastName = LastName;
+            this.FirstName = FirstName;
+            this.PhoneNumber = PhoneNumber;
+            this.Password = Password;
+            this.SignDate = SignDate;
+        }
+
+        public Client()
+        {
+        }
+
         public int ID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }

@@ -7,6 +7,20 @@ namespace RK2MIR.Models
 {
     public class Employee//-Order(1-m)
     {
+        public Employee(int ID, string LastName, string FirstName, long PhoneNumber, string Password, double RateOutOfTen)
+        {
+            this.ID = ID;
+            this.LastName = LastName;
+            this.FirstName = FirstName;
+            this.PhoneNumber = PhoneNumber;
+            this.Password = Password;
+            this.RateOutOfTen = RateOutOfTen;
+        }
+
+        public Employee()
+        {
+        }
+
         public int ID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
