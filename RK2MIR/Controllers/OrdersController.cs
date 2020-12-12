@@ -20,7 +20,7 @@ namespace RK2MIR.Controllers
             _context = context;
         }
 
-        private readonly OrderService _orderService;
+        /*private readonly OrderService _orderService;
 
         public OrdersController(OrderService orderService)
         {
@@ -31,6 +31,19 @@ namespace RK2MIR.Controllers
         {
             var order = await _orderService.GetOrders();
             return View(order);
+        }*/
+
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Order.ToListAsync());
+        }
+
+        public IActionResult ValidateOrderId(int uid)
+        {
+            if (uid == 1)
+                return Json(data: "Tut zanyato!)");
+
+            return Json(data: true);
         }
 
         // GET: Orders/Details/5

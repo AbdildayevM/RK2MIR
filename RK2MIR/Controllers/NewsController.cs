@@ -20,7 +20,7 @@ namespace RK2MIR.Controllers
             _context = context;
         }
 
-        private readonly NewsService _newsService;
+        /*private readonly NewsService _newsService;
 
         public NewsController(NewsService newsService)
         {
@@ -31,6 +31,18 @@ namespace RK2MIR.Controllers
         {
             var news = await _newsService.GetNews();
             return View(news);
+        }*/
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.News.ToListAsync());
+        }
+
+        public IActionResult ValidateNewsId(int uid)
+        {
+            if (uid == 1)
+                return Json(data: "Tut zanyato!)");
+
+            return Json(data: true);
         }
 
         // GET: News/Details/5

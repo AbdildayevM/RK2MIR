@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,9 +20,11 @@ namespace RK2MIR.Models
         {
         }
 
-        //add image + also in food model
+        [Remote(action: "ValidateNewsId", controller: "News")]
         public int NewsID { get; set; }
+        [Required]
         public string Title { get; set; }
+        [Required]
         public string Text { get; set; }
         //add link to the food/company
 

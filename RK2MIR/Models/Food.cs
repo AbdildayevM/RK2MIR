@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace RK2MIR.Models
 {
-    public class Food//-Order(m-1). News(1-1)
+    public class Food : IValidatableObject//-Order(m-1). News(1-1)
     {
         public Food(int FoodID, string Title, int Cost)
         {
@@ -18,8 +20,24 @@ namespace RK2MIR.Models
         {
         }
 
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            List<ValidationResult> errors = new List<ValidationResult>();
+
+            if (string.IsNullOrWhiteSpace(this.Title))
+                errors.Add(new ValidationResult("Title not specified"));
+
+            if (this.Cost < 0 )
+                errors.Add(new ValidationResult("Invalid cost"));
+
+            return errors;
+        }
+
+        [Remote(action: "ValidateFoodId", controller: "Foods")]
         public int FoodID { get; set; }
+       
         public string Title { get; set; }
+        [Required]
         public int Cost { get; set; }
 
 

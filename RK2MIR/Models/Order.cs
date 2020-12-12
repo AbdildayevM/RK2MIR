@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,9 +24,11 @@ namespace RK2MIR.Models
         {
         }
 
+        [Remote(action: "ValidateOrderId", controller: "Orders")]
         public int ID { get; set; }
         public int ClientID { get; set; }
         public int FoodID { get; set; }
+        [Required]
         public string Address { get; set; }
         public int Numb { get; set; } //number of ordered food
         public double TotalCost { get; set; }

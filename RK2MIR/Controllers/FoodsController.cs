@@ -20,7 +20,7 @@ namespace RK2MIR.Controllers
             _context = context;
         }
 
-        private readonly FoodService _foodService;
+        /*private readonly FoodService _foodService;
 
         public FoodsController(FoodService foodService)
         {
@@ -31,6 +31,18 @@ namespace RK2MIR.Controllers
         {
             var food = await _foodService.GetFoods();
             return View(food);
+        }*/
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Food.ToListAsync());
+        }
+
+        public IActionResult ValidateFoodId(int uid)
+        {
+            if (uid == 1)
+                return Json(data: "Tut zanyato!)");
+
+            return Json(data: true);
         }
 
         // GET: Foods/Details/5

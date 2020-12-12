@@ -20,7 +20,7 @@ namespace RK2MIR.Controllers
             _context = context;
         }
 
-        private readonly PartnersService _partnersService;
+        /*private readonly PartnersService _partnersService;
 
         public PartnersController(PartnersService partnersService)
         {
@@ -31,6 +31,18 @@ namespace RK2MIR.Controllers
         {
             var partners = await _partnersService.GetPartners();
             return View(partners);
+        }*/
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Partners.ToListAsync());
+        }
+
+        public IActionResult ValidatePartnerId(int uid)
+        {
+            if (uid == 1)
+                return Json(data: "Tut zanyato!)");
+
+            return Json(data: true);
         }
 
         // GET: Partners/Details/5

@@ -20,7 +20,7 @@ namespace RK2MIR.Controllers
             _context = context;
         }
 
-        private readonly EmployeeService _employeeService;
+        /*private readonly EmployeeService _employeeService;
 
         public EmployeesController(EmployeeService employeeService)
         {
@@ -31,10 +31,22 @@ namespace RK2MIR.Controllers
         {
             var employee = await _employeeService.GetEmployees();
             return View(employee);
+        }*/
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Employee.ToListAsync());
         }
 
-            // GET: Employees/Details/5
-            public async Task<IActionResult> Details(int? id)
+        public IActionResult ValidateUserId(int uid)
+        {
+            if (uid == 1)
+                return Json(data: "Tut zanyato!)");
+
+            return Json(data: true);
+        }
+
+        // GET: Employees/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {

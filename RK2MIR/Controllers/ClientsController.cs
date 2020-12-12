@@ -14,12 +14,13 @@ namespace RK2MIR.Controllers
     public class ClientsController : Controller
     {
         private readonly RK2MIRContext _context;
-        private readonly ClientService   _clientService;
+        //private readonly ClientService   _clientService;
 
-        public ClientsController(ClientService clientService)
+        /*public ClientsController(ClientService clientService)
         {
             _clientService = clientService;
-        }   
+        }   */
+
         public ClientsController(RK2MIRContext context)
         {
             _context = context;
@@ -28,8 +29,20 @@ namespace RK2MIR.Controllers
         // GET: Clients
         public async Task<IActionResult> Index()
         {
+            return View(await _context.Client.ToListAsync());
+        }
+        /*public async Task<IActionResult> Index()
+        {
             var clients = await _clientService.GetClients();
             return View(clients);
+        }*/
+
+        public IActionResult ValidateUserId(int uid)
+        {
+            if (uid == 1)
+                return Json(data: "Tut zanyato!)");
+
+            return Json(data: true);
         }
 
         // GET: Clients/Details/5

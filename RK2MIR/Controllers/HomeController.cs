@@ -19,6 +19,8 @@ namespace RK2MIR.Controllers
             _logger = logger;
         }
 
+        
+
         public IActionResult Index()
         {
             return View();

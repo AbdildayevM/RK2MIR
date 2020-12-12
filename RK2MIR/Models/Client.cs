@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using RK2MIR.CustomValidation;
 
 namespace RK2MIR.Models
 {
     public class Client//-Order(1-m)
     {
 
-        public Client(int ID, string Lastname, string FirstName, long PhoneNumber, string Password, DateTime SignDate)
+        public Client(int ID, string LastName, string FirstName, long PhoneNumber, string Password, DateTime SignDate)
         {
             this.ID = ID;
             this.LastName = LastName;
@@ -23,13 +25,19 @@ namespace RK2MIR.Models
         {
         }
 
+        [Remote(action: "ValidateUserId", controller: "Clients")]
         public int ID { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public long PhoneNumber { get; set; }
+        [Required]
         public string Password { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [CustomDate(ErrorMessage = "Please be careful!")]
         public DateTime SignDate { get; set; }
 
         public void setID(int ID)
