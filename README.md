@@ -4,3 +4,6 @@ This project somethin like simple version of Glovo. Now we delivering only food.
 Registration is only for Clients. Registration of Employees will be implemented by administrator manually with DB. 
 ER-model added.
 Project is unit tested.
+
+New Final Project located here:
+https://github.com/AbdildayevM/NetFinal.git
